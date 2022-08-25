@@ -1,0 +1,125 @@
+<feed version="1.0" hasPendingRequests="false">
+  <company />
+  <status>200</status>
+  <errmsg>OK</errmsg>
+  <interval>0</interval>
+    <entry type="predatasource">
+        <version>1638365954</version>
+        <name>Push_kg_service_KG data source</name>
+        <displayedas>KG data source</displayedas>
+        <description />
+        <collector>pushmodules</collector>
+        <hasMultiInstances>true</hasMultiInstances>
+        <schedule>60</schedule>
+        <appliesTo>hasPushModules("Push_kg_service_KG data source")</appliesTo>
+        <wildcardauto>false</wildcardauto>
+        <wildcardpersist>false</wildcardpersist>
+        <wildcardlinuxscript />
+        <wildcardlinuxcmdline />
+        <wildcardwinscript />
+        <wildcardwincmdline />
+        <wildcardgroovyscript />
+        <wildcardschedule>1440</wildcardschedule>
+        <wildcarddisable>false</wildcarddisable>
+        <wildcarddeleteinactive>false</wildcarddeleteinactive>
+        <agdmethod>none</agdmethod>
+        <agdparams />
+        <group>kg_service_datasources</group>
+        <tags />
+        <technology />
+        <adlist>{"agdmethod":"none","agdparams":"","id":0,"filters":[],"params":{}}</adlist>
+        <schemaVersion>2</schemaVersion>
+        <dataSourceType>1</dataSourceType>
+        <attributes>
+        </attributes>
+        <datapoints>
+        <datapoint>
+            <name>point_1</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam />
+            <usevalue />
+            <alertexpr>JOPA-JOPA</alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject />
+            <alertbody />
+            <enableanomalyalertsuppression />
+            <adadvsettingenabled>false</adadvsettingenabled>
+            <warnadadvsetting />
+            <erroradadvsetting />
+            <criticaladadvsetting />
+            <description />
+            <maxvalue />
+            <minvalue />
+            <userparam1>none</userparam1>
+            <userparam2 />
+            <userparam3 />
+            <iscomposite>false</iscomposite>
+            <rpn />
+            <alertTransitionIval>5</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        <datapoint>
+            <name>point_3</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam />
+            <usevalue />
+            <alertexpr>delta&gt; 11 22 33</alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject />
+            <alertbody />
+            <enableanomalyalertsuppression />
+            <adadvsettingenabled>false</adadvsettingenabled>
+            <warnadadvsetting />
+            <erroradadvsetting />
+            <criticaladadvsetting />
+            <description />
+            <maxvalue />
+            <minvalue />
+            <userparam1>none</userparam1>
+            <userparam2 />
+            <userparam3 />
+            <iscomposite>false</iscomposite>
+            <rpn />
+            <alertTransitionIval>5</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        <datapoint>
+            <name>point_2</name>
+            <dataType>7</dataType>
+            <type>2</type>
+            <postprocessormethod>none</postprocessormethod>
+            <postprocessorparam />
+            <usevalue />
+            <alertexpr>delta&gt; 30</alertexpr>
+            <alertmissing>1</alertmissing>
+            <alertsubject />
+            <alertbody />
+            <enableanomalyalertsuppression />
+            <adadvsettingenabled>false</adadvsettingenabled>
+            <warnadadvsetting />
+            <erroradadvsetting />
+            <criticaladadvsetting />
+            <description />
+            <maxvalue />
+            <minvalue />
+            <userparam1>none</userparam1>
+            <userparam2 />
+            <userparam3 />
+            <iscomposite>false</iscomposite>
+            <rpn />
+            <alertTransitionIval>5</alertTransitionIval>
+            <alertClearTransitionIval>0</alertClearTransitionIval>
+        </datapoint>
+        </datapoints>
+        <graphs>
+        </graphs>
+        <overviewgraphs>
+        </overviewgraphs>
+        <scripts>
+        </scripts>
+    </entry>
+</feed>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>WebSocket demo</title>
+    </head>
+    <body>
+        <script>
+            var ws = new WebSocket("ws://10.11.150.210:80/"),
+                messages = document.createElement('ul');
+
+            ws.onopen = event => {
+                alert('onopen');
+                ws.send("ping");
+            };
+
+            ws.onmessage = function (event) {
+                var messages = document.getElementsByTagName('ul')[0],
+                    message = document.createElement('li'),
+                    content = document.createTextNode(event.data);
+
+                message.appendChild(content);
+                messages.appendChild(message);
+            };
+
+            ws.onclose = event => {
+                alert('onclose');
+            };
+
+            document.body.appendChild(messages);
+        </script>
+    </body>
+</html>

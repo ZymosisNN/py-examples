@@ -1,0 +1,39 @@
+version: 1
+disable_existing_loggers: false
+
+root:
+  level: NOTSET
+  handlers: [console]
+
+loggers:
+    asyncio:
+      level: DEBUG
+      handlers: [console]
+
+    sqlalchemy:
+      # "level = INFO" logs SQL queries.
+      # "level = DEBUG" logs SQL queries and results.
+      # "level = WARN" logs neither.  (Recommended for production systems.)
+      level: DEBUG
+      handlers: [console]
+      propagate: False
+
+#    sqlalchemy.engine:
+      # "level = INFO" logs SQL queries.
+      # "level = DEBUG" logs SQL queries and results.
+      # "level = WARN" logs neither.  (Recommended for production systems.)
+#      level: DEBUG
+#      handlers: [console]
+#      propagate: False
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: NOTSET
+    formatter: default
+    stream: ext://sys.stdout
+
+formatters:
+  default:
+    format: '{asctime:15s} {levelname:>8s} {name:>30s}  {message}'
+    style: '{'
