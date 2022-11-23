@@ -9,6 +9,7 @@ parser.add_argument('-f', type=FileType())
 parser.add_argument('pos1')
 parser.add_argument('-c', action='store_const', const='PermanentJopa')
 parser.add_argument('-z', action='store_false')
+parser.add_argument('-X', dest='my_x', default='default value for my_x')
 args = parser.parse_args('pos_arg_value -a AA CC -b 1 2 -c -z -f ex_decorator.py'.split())
 
 print(args)
