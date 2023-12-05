@@ -10,7 +10,7 @@ logging.addLevelName(TRACE, 'TRACE')
 _lock = RLock()
 
 
-def set_format(fmt: str = '%(asctime)-15s  |%(levelname)+8s| %(name)+30s |  %(message)s') -> None:
+def set_format(fmt: str = '%(asctime)-15s |%(levelname)+8s| %(name)+30s | %(message)s') -> None:
     logging.basicConfig(level=logging.NOTSET, stream=sys.stdout, format=fmt)
 
 
