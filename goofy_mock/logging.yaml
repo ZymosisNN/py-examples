@@ -1,0 +1,47 @@
+disable_existing_loggers: false
+
+formatters:
+  access:
+    format: '%(asctime)-15s |%(levelname)+8s| %(name)+25s | %(message)s'
+  default:
+    format: '%(asctime)-15s |%(levelname)+8s| %(name)+25s | %(message)s'
+
+handlers:
+  access:
+    class: logging.StreamHandler
+    formatter: access
+    stream: ext://sys.stdout
+  default:
+    class: logging.StreamHandler
+    formatter: default
+    stream: ext://sys.stderr
+
+root:
+  handlers:
+  - default
+  level: DEBUG
+  propagate: false
+
+loggers:
+  hpack:
+    handlers:
+    - default
+    level: INFO
+    propagate: false
+  paramiko.transport:
+    handlers:
+    - default
+    level: INFO
+    propagate: false
+  uvicorn.access:
+    handlers:
+    - access
+    level: INFO
+    propagate: false
+  uvicorn.error:
+    handlers:
+    - default
+    level: INFO
+    propagate: false
+
+version: 1

@@ -1,0 +1,11 @@
+nf,ip
+AMF,2001:ab8:cafe::2
+AUSF,2001:ab8:cafe::111
+SMF,2001:ab8:cafe::105
+UDM,2001:ab8:cafe::102
+UDR,2001:ab8:cafe::103
+UDSF,2001:ab8:cafe::106
+UPFC,2001:ab8:cafe::107
+UPFU,
+GNB-1,2001:ab8:cafe::122
+GNB-2,2001:ab8:cafe::123
