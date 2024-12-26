@@ -1,41 +1,36 @@
-import logging
-from typing import Annotated, Any
-
-from fastapi import Request, FastAPI, Body, Header
+from fastapi import Request, FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from starlette.responses import Response
-from starlette.status import HTTP_200_OK, HTTP_202_ACCEPTED
+from starlette.status import HTTP_200_OK, HTTP_202_ACCEPTED, HTTP_400_BAD_REQUEST
 
 from ya_logging import get_logger
+import storage
+from models import Answer
 
 app = FastAPI()
-LOG = get_logger("yati.relay")
-
-received_requests = []
+LOG = get_logger("mock")
 
 
 @app.get("/REQUESTS", status_code=HTTP_200_OK)
-async def handle_item() -> JSONResponse:
-    return JSONResponse(content=received_requests)
+async def get_received_requests() -> JSONResponse:
+    return JSONResponse(content=[rec.model_dump() for rec in storage.get_requests()])
 
 
-@app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE"], status_code=HTTP_200_OK)
+@app.post('/SET-RSP', status_code=HTTP_202_ACCEPTED)
+async def mgmt_handler(answer: Answer):
+    LOG.info(answer)
+    return Response(f'Mock response is set for {answer.ep_key}')
+
+
+@app.api_route("/{path:path}", methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'])
 async def handle_item(req: Request) -> Response:
-    path = req.scope['raw_path'].decode('utf-8')
-    headers = dict(req.headers)
-    body = (await req.body()).decode('utf-8')
+    record = await storage.save_request(req)
+    try:
+        answer = storage.get_answer(record)
+    except KeyError as e:
+        raise HTTPException(HTTP_400_BAD_REQUEST, f'Mock answer is not set for {record.ep_key}')
 
-    LOG.info('--- New request ---')
-    LOG.info(f'Method: {req.method}')
-    LOG.info(f'Path: {path}')
-    LOG.log_dict(headers, description='Headers:', level=logging.INFO)
-    LOG.trace(f'Body:\n{body}')
-
-    received_requests.append({
-        'METHOD': req.method,
-        'PATH': path,
-        'HEADERS': headers,
-        'BODY': body,
-    })
-
-    return Response(status_code=HTTP_202_ACCEPTED)
+    if isinstance(answer.BODY, dict):
+        return JSONResponse(content=answer.BODY, status_code=answer.STATUS, headers=answer.HEADERS)
+    else:
+        return Response(content=answer.BODY, status_code=answer.STATUS, headers=answer.HEADERS)
